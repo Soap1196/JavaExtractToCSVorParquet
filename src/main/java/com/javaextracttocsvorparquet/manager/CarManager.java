@@ -1,4 +1,6 @@
-package main.java.com.javaextracttocsvorparquet.manager;
+package com.javaextracttocsvorparquet.manager;
+
+import com.javaextracttocsvorparquet.models.Cars;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.javadataframe.models.Cars;
 
 public class CarManager {
 

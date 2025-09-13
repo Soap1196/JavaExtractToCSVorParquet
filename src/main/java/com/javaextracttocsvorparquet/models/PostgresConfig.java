@@ -1,4 +1,4 @@
-package main.java.com.javaextracttocsvorparquet.models;
+package com.javaextracttocsvorparquet.models;
 
 public class PostgresConfig {
     public String host;

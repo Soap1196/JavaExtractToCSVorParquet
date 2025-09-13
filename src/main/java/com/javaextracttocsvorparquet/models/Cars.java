@@ -1,4 +1,4 @@
-package com.javadataframe.models;
+package com.javaextracttocsvorparquet.models;
 
 public class Cars {
 
