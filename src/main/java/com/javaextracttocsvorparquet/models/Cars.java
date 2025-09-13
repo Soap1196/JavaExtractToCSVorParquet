@@ -1,12 +1,12 @@
 package com.javadataframe.models;
 
-public class cars {
+public class Cars {
 
     private String buying;
     private String maint;
     private String doors;
     private String persons;
-    private String lugBoot;
+    private String lug_boot;
     private String safety;
     
     public String getBuying() {
@@ -34,15 +34,24 @@ public class cars {
         this.persons = persons;
     }
     public String getLugBoot() {
-        return lugBoot;
+        return lug_boot;
     }
-    public void setLugBoot(String lugBoot) {
-        this.lugBoot = lugBoot;
+    public void setLugBoot(String lug_boot) {
+        this.lug_boot = lug_boot;
     }
     public String getSafety() {
         return safety;
     }
     public void setSafety(String safety) {
+        this.safety = safety;
+    }
+
+    public Cars(String buying, String maint, String doors, String persons, String lug_boot, String safety) {
+        this.buying = buying;
+        this.maint = maint;
+        this.doors = doors;
+        this.persons = persons;
+        this.lug_boot = lug_boot;
         this.safety = safety;
     }
     
@@ -54,7 +63,7 @@ public class cars {
         result = prime * result + ((maint == null) ? 0 : maint.hashCode());
         result = prime * result + ((doors == null) ? 0 : doors.hashCode());
         result = prime * result + ((persons == null) ? 0 : persons.hashCode());
-        result = prime * result + ((lugBoot == null) ? 0 : lugBoot.hashCode());
+        result = prime * result + ((lug_boot == null) ? 0 : lug_boot.hashCode());
         result = prime * result + ((safety == null) ? 0 : safety.hashCode());
         return result;
     }
@@ -66,7 +75,7 @@ public class cars {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        cars other = (cars) obj;
+        Cars other = (Cars) obj;
         if (buying == null) {
             if (other.buying != null)
                 return false;
@@ -87,10 +96,10 @@ public class cars {
                 return false;
         } else if (!persons.equals(other.persons))
             return false;
-        if (lugBoot == null) {
-            if (other.lugBoot != null)
+        if (lug_boot == null) {
+            if (other.lug_boot != null)
                 return false;
-        } else if (!lugBoot.equals(other.lugBoot))
+        } else if (!lug_boot.equals(other.lug_boot))
             return false;
         if (safety == null) {
             if (other.safety != null)
@@ -102,7 +111,7 @@ public class cars {
     @Override
     public String toString() {
         return "cars [buying=" + buying + ", maint=" + maint + ", doors=" + doors + ", persons=" + persons
-                + ", lugBoot=" + lugBoot + ", safety=" + safety + "]";
+                + ", lugBoot=" + lug_boot + ", safety=" + safety + "]";
     }
 
     
