@@ -15,7 +15,7 @@ public class Main {
             System.out.println(car);
         }
         try {
-            ParquetManager.writeListToParquet(cars, "src/main/java/com/javaextracttocsvorparquet/fileStore", Cars.class);
+            ParquetManager.writeListToParquet(cars, "src/main/java/com/javaextracttocsvorparquet/fileStore");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

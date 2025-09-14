@@ -1,0 +1,13 @@
+{
+  "namespace": "com.javaextracttocsvorparquet.models",
+  "type": "record",
+  "name": "Cars",
+  "fields": [
+    { "name": "buying", "type": "string" },
+    { "name": "maint", "type": "string" },
+    { "name": "doors", "type": "string" },
+    { "name": "persons", "type": "string" },
+    { "name": "lug_boot", "type": "string" },
+    { "name": "safety", "type": "string" }
+  ]
+}

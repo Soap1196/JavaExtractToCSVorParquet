@@ -1,5 +1,17 @@
 package com.javaextracttocsvorparquet.models;
 
+
+import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericRecord;
+import org.apache.avro.io.BinaryEncoder;
+import org.apache.avro.io.EncoderFactory;
+import org.apache.avro.reflect.ReflectData;
+import org.apache.avro.reflect.ReflectDatumWriter;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+
+import java.io.IOException;
+
 public class Cars {
 
     private String buying;
@@ -114,6 +126,43 @@ public class Cars {
                 + ", lugBoot=" + lug_boot + ", safety=" + safety + "]";
     }
 
-    
-    
+    public GenericRecord convertPojoToAvroRecord(Cars car) throws IOException {
+        // Get the Avro schema from the POJO class using reflection
+        Schema schema = ReflectData.get().getSchema(car.getClass());
+
+        // Create a ReflectDatumWriter for the POJO
+        ReflectDatumWriter<Cars> datumWriter = new ReflectDatumWriter<>(schema);
+
+        // Write the POJO to a GenericRecord
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(outputStream, null);
+        datumWriter.write(car, encoder);
+        encoder.flush();
+
+        // Create a GenericRecord and populate it (this step might be implicit depending on usage)
+        // For direct conversion to GenericRecord, you might use a different approach or
+        // deserialize from the byte array.
+        // A more direct way to get a GenericRecord is often needed for dynamic schema handling.
+        // For this example, we'll assume the goal is to get a serialized form or
+        // directly use the ReflectDatumWriter for writing.
+
+        // If you need a GenericRecord object directly, you could create one and then populate it
+        // based on the POJO fields. However, ReflectDatumWriter is primarily for serialization.
+        // For direct GenericRecord creation from a POJO, you might manually map fields or
+        // use libraries like Avro-Jackson.
+
+        // The above code primarily demonstrates writing the POJO to an Avro binary format.
+        // To get a GenericRecord, you'd typically read this binary data back using a GenericDatumReader.
+        // Or, for simpler cases, manually construct a GenericRecord:
+        GenericRecord avroRecord = new GenericData.Record(schema);
+        avroRecord.put("buying", car.buying);
+        avroRecord.put("maint", car.maint);
+        avroRecord.put("doors", car.doors);
+        avroRecord.put("persons", car.persons);
+        avroRecord.put("lug_boot", car.lug_boot);
+        avroRecord.put("safety", car.safety);
+        return avroRecord;
+    }
+
+
 }
